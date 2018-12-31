@@ -5,7 +5,6 @@ for i in range(N):
     string = list(input())
     while 1:
         if len(string) == 1:
-            print("##")
             count += 1
             break
         pop_one = string.pop(0)
@@ -13,6 +12,5 @@ for i in range(N):
             continue
         if pop_one in string:
             break
-        print(string)
         
 print(count)
