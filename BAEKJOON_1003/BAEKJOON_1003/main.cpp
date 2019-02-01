@@ -6,8 +6,8 @@
 int main(int argc, const char * argv[]) {
     int num;
     int i;
-    int question[40]; // num만 들어오는 수들을 저장
-    int answer[40][2] = {{1,0},{0,1},};
+    int question[10000]; // num만 들어오는 수들을 저장
+    int answer[10000][2] = {{1,0},{0,1}};
     // n행 1열에는 n에 대해서 0이 몇 번 나오는지
     // n행 2열에는 n에 대해서 1이 몇 번 나오는지 저장
     // 단 n행에 대한 기준은 0행부터 시작한다고 가정한다.
@@ -19,6 +19,9 @@ int main(int argc, const char * argv[]) {
     // 몇 번 반복할지
     std::cin >> num;
     
+   
+    
+    // 들어온 수 중 최대값을 구해서 최대값 까지만 계산한다.
     for (i=0;i<num;i++){
         std::cin >> question[i];
         if (max < question[i])
