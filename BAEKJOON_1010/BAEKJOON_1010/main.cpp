@@ -1,7 +1,7 @@
 // 조합을 이용해서 쉽게 풀 수 있지만 시간초과 걸린다.
+// 따라서 dp를 이용한다.
+
 #include <iostream>
-
-
 
 int main(int argc, const char * argv[]) {
     int num;
@@ -34,9 +34,5 @@ int main(int argc, const char * argv[]) {
     for (i=0;i<num;i++){
         std::cin >> Lsite >> Rsite;
         std::cout << arr[Lsite][Rsite] << std::endl;
-        
-        
     }
-    
-    
 }
