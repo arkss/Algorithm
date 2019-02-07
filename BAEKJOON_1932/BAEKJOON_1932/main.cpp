@@ -16,13 +16,12 @@ int main(int argc, const char * argv[]) {
     
     int arr[arr_size][arr_size]; // 배열을 초기화 하기 위해 여기다가 0을 대입하면 왜 안되는걸까
     
-    // 일단은 0으로 초기화
+//     일단은 0으로 초기화
     for (i=0;i<arr_size;i++){
         for (j=0;j<arr_size;j++){
             arr[i][j] = 0;
         }
     }
-    
     
     // 값 대입
     for (i=0;i<arr_size;i++){
@@ -48,6 +47,8 @@ int main(int argc, const char * argv[]) {
 //        }
 //        std::cout << "\n";
 //    }
+    
+    
     std::cout << arr[0][0];
     
     
