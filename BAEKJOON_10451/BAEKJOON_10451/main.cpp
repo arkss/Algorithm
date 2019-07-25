@@ -28,6 +28,7 @@ int main(int argc, const char * argv[]) {
         
         int cycleNum = 0;
         
+        
         for (int i=1;i<=N;i++){
             if (!checkList[i])
             {
@@ -38,6 +39,9 @@ int main(int argc, const char * argv[]) {
         }
         
         cout << cycleNum << endl;
+        for (int i=1;i<=N;i++){
+            checkList[i] = 0;
+        }
     }
     
     
