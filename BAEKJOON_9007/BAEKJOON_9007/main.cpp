@@ -51,7 +51,7 @@ int main(int argc, const char * argv[]) {
             while (left<=right){
                 int point = (left+ right) / 2;
                 
-                
+                // 목표치에 대한 편차가 같으면 작은 값을 택한다.
                 if(minValue == abs(goal2 - list2[point]) && result > list1[i] + list2[point]) {
                     result = list1[i] + list2[point];
                 }
