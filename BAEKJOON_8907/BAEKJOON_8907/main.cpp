@@ -9,7 +9,7 @@ using namespace std;
 void printArr(int N){
     for (int i=1;i<N;i++){
         for (int j=1;j<N-i+1;j++){
-          //  cout << graph[i][j];
+            //  cout << graph[i][j];
         }
         cout << endl;
     }
@@ -50,7 +50,7 @@ int main(int argc, const char * argv[]) {
         }
         
         //cout << totalNum << " " << errorNum << endl;
-        cout << totalNum - errorNum / 2;
+        cout << totalNum - errorNum / 2 << "\n";
         
         
     }
@@ -65,9 +65,9 @@ int main(int argc, const char * argv[]) {
  선분은 파랑 or 빨강
  
  삼각형을 선택
-    색이 다 같아야함
+ 색이 다 같아야함
  
-삼각형의 개수는?
+ 삼각형의 개수는?
  
  dfs 로 순회하면서 같은 색이 3번 나오고 원점으로 돌아오면 count++
  겹치는게 너무 많이 생긴다.
@@ -85,3 +85,4 @@ int main(int argc, const char * argv[]) {
  
  삼각형의 개수를 출력
  */
+
