@@ -26,9 +26,6 @@ void bfs(string str){
             
         }
     }
-    
-    
-
 
 int main(int argc, const char * argv[]) {
     
