@@ -2,41 +2,27 @@
 
 using namespace std;
 
-int arr[10000];
-int dp[10000];
-
-int max(int a,int b)
-{
-    return a>b ? a:b;
+int max(int a,int b,int c){
+    return max(max(a,b), c);
 }
 
-int main(int argc, const char * argv[]) {
-    int N;
-    int i;
+int main(){
+    int n;
+    cin >> n;
+    int cup[10001];
+    int dp[10001];
     
-    cin >> N;
-    
-    for(i=1;i<=N;i++){
-        cin >> arr[i];
+    for (int i=1;i<=n;i++){
+        cin >> cup[i];
+    }
+    dp[0] = 0;
+    dp[1] = cup[1];
+    dp[2] = dp[1] + cup[2];
+    for (int i=3;i<=n;i++){
+        dp[i] = max(dp[i-3]+cup[i]+cup[i-1], dp[i-2]+cup[i], dp[i-1]);
     }
     
-    dp[1] = arr[1];
-    dp[2] = arr[1] + arr[2];
-
+    cout << dp[n] << "\n";
     
-    for(i=3;i<=N;i++){
-        // i번째 와인을 마신 경우, i-1번째 와인을 마신 경우와 마시지 않은 경우를 비교해준다.
-        dp[i] = max(arr[i] + arr[i-1]+dp[i-3], arr[i]+dp[i-2]);
-        // i번째 와인을 마신 경우와 마시지 않은 경우를 비교해준다.
-        dp[i] = max(dp[i], dp[i-1]);
-        
-    }
-    
-   
-    cout << dp[N];
-//    for(i=0;i<N;i++){
-//        cout << dp[i] << endl;
-//    }
-    
+    return 0;
 }
-
