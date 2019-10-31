@@ -1,96 +1,73 @@
-////#include <iostream>
-////
-////using namespace std;
-////
-////int board[101][101];
-////int soak[101][101];
-////
-////int main(int argc, const char * argv[]) {
-////
-////
-////    return 0;
-////}
-//
-//
-//#include <iostream>
-//#include <algorithm>
-//#include <vector>
-//
-//using namespace std;
-//
-//int parent[1000000];
-//
-//int Find(int x){
-//    if (x==parent[x]) return x;
-//    else {
-//        int y = Find(parent[x]);
-//        parent[x] = y;
-//        return y;
-//    }
-//}
-//
-//void Union (int x, int y){
-//    y = Find(y);
-//    x = Find(x);
-//    if (x!=y){
-//        parent[y] = x;
-//    }
-//}
-//
-//
-//class Edge {
-//public:
-//    int node[2];
-//    int distance;
-//
-//    Edge(int a,int b,int distance){
-//        this->node[0] = a;
-//        this->node[1] = b;
-//        this->distance = distance;
-//    }
-//
-//    //연산자 오버로딩
-//    bool operator<(const Edge &edge) const {
-//        return (this->distance) < (edge.distance);
-//    }
-//
-//
-//};
-//
-//int main(){
-//
-//    // 노드 수와 엣지 수
-//    int n=7;
-//    int m =11;
-//
-//    vector <Edge> v;
-//    v.push_back(Edge(1,7,12));
-//    v.push_back(Edge(1,4,28));
-//    v.push_back(Edge(1,2,67));
-//    v.push_back(Edge(1,5,17));
-//    v.push_back(Edge(2,4,24));
-//    v.push_back(Edge(2,5,62));
-//    v.push_back(Edge(3,5,20));
-//    v.push_back(Edge(3,6,37));
-//    v.push_back(Edge(4,7,13));
-//    v.push_back(Edge(5,6,45));
-//    v.push_back(Edge(5,7,73));
-//
-//    // 위의 연산자 오버로딩
-//    sort(v.begin(), v.end());
-//
-//    for (int i=1;i<=n;i++){
-//        parent[i] = i;
-//    }
-//
-//    int sum = 0;
-//    for (int i=0;i<v.size();i++){
-//        if (Find(v[i].node[0]) != Find(v[i].node[1])){
-//            sum += v[i].distance;
-//            Union(v[i].node[0], v[i].node[1]);
-//        }
-//    }
-//
-//    cout << sum << "\n";
-//}
+#include <iostream>
 
+using namespace std;
+
+int board[101][101];
+int visited[101][101];
+
+int dr[] = {0,0,1,-1};
+int dc[] = {1,-1,0,0};
+
+void dfs(int r, int c, int n){
+    
+    visited[r][c] = -1;
+    
+    for (int i=0;i<4;i++){
+        int nr = r + dr[i];
+        int nc = c + dc[i];
+        if (0<=nr && nr<n && 0<=nc && nc<n){
+            if (visited[nr][nc] == 0)
+                dfs(nr,nc,n);
+        }
+    }
+}
+
+int main(int argc, const char * argv[]) {
+    
+    int n;
+    cin >> n;
+    
+    int maxH = 0;
+    
+    for (int i=0;i<n;i++){
+        for (int j=0;j<n;j++){
+            cin >> board[i][j];
+            if (board[i][j] > maxH)
+                maxH = board[i][j];
+        }
+    }
+
+    
+    int safeNumMax = 0;
+    
+    for (int h=0;h<=maxH;h++){
+        // visited 초기화
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n;j++){
+                // 물에 잠기면 -1 아니면 0
+                if (board[i][j] <= h)
+                    visited[i][j] = -1;
+                else
+                    visited[i][j] = 0;
+            }
+        }
+        
+        int safeNum = 0;
+        
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n;j++){
+                if (visited[i][j] == 0){
+                    
+                    safeNum++;
+                    dfs(i,j,n);
+                }
+            }
+        }
+        
+        safeNumMax = max(safeNumMax, safeNum);
+    }
+    
+    cout << safeNumMax << "\n";
+  
+    return 0;
+}
