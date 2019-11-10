@@ -3,48 +3,53 @@
 
 using namespace std;
 
-const int MAX = 100 + 1;
-const int INF = 100000 + 1;
+#define INF 987654321
 
-int N, M;
+int graph[101][101];
 
-int graph[MAX][MAX];
-
-void floyd(void){
-    //via번째 도시를 거쳐가는게 더 빠를 경우 update
-    for (int via = 1; via <= N; via++){
-        for (int start = 1; start <= N; start++){
-            if (graph[start][via] == 0)
-                continue;
-            for (int end = 1; end <= N; end++){
-                if (graph[via][end] == 0 || start == end)
-                    continue;
-                if (graph[start][end] == 0 || graph[start][end] > graph[start][via] + graph[via][end])
-                    
-                    graph[start][end] = graph[start][via] + graph[via][end];
+void floyd(int n){
+    for (int mid=1;mid<=n;mid++){
+        for (int start=1;start<=n;start++){
+            for (int end=1;end<=n;end++){
+                if (graph[start][end] > graph[start][mid] + graph[mid][end])
+                    graph[start][end] = graph[start][mid] + graph[mid][end];
             }
         }
     }
 }
 
-int main(void){
-    
-    cin >> N >> M;
-    for (int i = 0; i < M; i++){
-        int start, end, cost;
-        cin >> start >> end >> cost;
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-        if (!graph[start][end])
-            graph[start][end] = cost;
-        else
-            graph[start][end] = min(graph[start][end], cost);
+    int n,m;
+    cin >> n >> m;
+
+    for (int i=1;i<=n;i++){
+        for (int j=1;j<=n;j++){
+            graph[i][j] = INF;
+            if (i==j) graph[i][j] = 0;
+        }
     }
-    floyd();
 
-    for (int i = 1; i <= N; i++){
-        for (int j = 1; j <= N; j++)
+    for (int i=0;i<m;i++){
+        int node1, node2, w;
+        cin >> node1 >> node2 >> w;
+        graph[node1][node2] = min(graph[node1][node2],w);
+    }
+
+    floyd(n);
+
+    for (int i=1;i<=n;i++){
+        for (int j=1;j<=n;j++){
+            if (graph[i][j] == INF)
+                cout << 0 << " ";
+            else
             cout << graph[i][j] << " ";
+        }
         cout << "\n";
     }
+    
     return 0;
 }
