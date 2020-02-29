@@ -1,3 +1,6 @@
+# MAC OS
+.DS_Store
+
 
 # Created by https://www.gitignore.io/api/xcode
 # Edit at https://www.gitignore.io/?templates=xcode
@@ -41,3 +44,6 @@ media/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.gitignore.io/api/xcode
+
+
+
