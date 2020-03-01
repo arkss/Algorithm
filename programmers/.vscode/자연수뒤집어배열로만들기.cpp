@@ -8,13 +8,12 @@ vector<int> solution(long long n){
         int temp = n % 10;
         n = n / 10;
         answer.push_back(temp);
+        if (n == 0) break;
     }
     
     return answer;
 }
 
 int main(){
-    for (int i : solution(12345)){
-        cout << i << "\n";
-    }
+
 }
