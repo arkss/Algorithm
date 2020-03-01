@@ -11,8 +11,7 @@ bool solution(int x){
         x = x/10;
         if (x == 0) break;
     }
-    cout << sumValue << " " << originX << "\n"; 
-    if (sumValue % originX == 0) return true;
+    if (originX % sumValue == 0) return true;
     else return false;
 }
 
