@@ -42,7 +42,7 @@ int solution(string dartResult){
     }
     points.push_back(point);
     for (int i=0;i<points.size();i++){
-        cout << points[i] << "\n";
+        //cout << points[i] << "\n";
         answer += points[i];
     }
     return answer;
