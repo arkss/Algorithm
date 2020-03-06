@@ -20,8 +20,6 @@ int solution(string arrangement){
             answer += s.size();
         }
         prev = now;
-        
-        //cout << answer << "\n";
     }
     return answer;
 }
