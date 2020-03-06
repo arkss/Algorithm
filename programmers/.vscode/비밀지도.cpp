@@ -4,15 +4,6 @@
 
 using namespace std;
 
-string decimalToBinary(int n){
-    string answer = "";
-    while (1){
-
-        if (n == 0) break;
-    }
-    return answer;
-}
-
 vector <string> solution(int n, vector<int> arr1, vector<int> arr2){
     vector<string> answer;
     for (int i=0;i<n;i++){
