@@ -11,7 +11,7 @@ vector<int> solution(vector<int> progresses, vector<int> speeds){
         int day = (100 - progresses[i]) / speeds[i];
         days.push_back(day);
     }
- //7 4 9
+ 
     int cnt = 0;
     int prev_day;
     for (int i=0;i<size;i++){
@@ -28,10 +28,6 @@ vector<int> solution(vector<int> progresses, vector<int> speeds){
     }
     answer.push_back(cnt);
     return answer;
-
-    // for (int i=0;i<answer.size();i++){
-    //     cout << answer[i] << "\n";
-    // }
 }
 
 int main(){
