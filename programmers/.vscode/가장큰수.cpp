@@ -16,50 +16,23 @@ string int_to_string(int n){
     return result;
 }
 
-bool compare(string a, string b){
-    int a_size = a.size();
-    int b_size = b.size();
-    int min_size;
-    string longger = "";
-    if (a_size < b_size){
-        min_size = a_size;
-        longger = b;
-    } else {
-        min_size = b_size;
-        longger = a;
-    }
-    for (int i=0;i<min_size;i++){
-        if (a[i] > b[i]) return true;
-        else if (a[i] < b[i]) return false;
-    }
-    // 완전히 같은 경우
-    if (a_size == b_size) {
-        cout << "완전히 같은 경우" << "\n";
-        return true;
-    }
-    
-    if (longger[0] > longger[min_size]) return false;
-    else return true;
+bool compare(const string &a, const string &b) {
+	return a + b > b + a ? true : false;
 }
 
 string solution(vector<int> numbers) {
-    string answer = "";
-    int size = numbers.size();
-    vector<string> numbers_str;
-    for (int i=0;i<size;i++){
-        numbers_str.push_back(int_to_string(numbers[i]));
-    }
-    sort(numbers_str.begin(),numbers_str.end(), compare);
-    for (int i=0;i<size;i++){
-        answer += numbers_str[i];
-    }
-
-    int zero_cnt = 0;
-    for (int i=0;i<size;i++){
-        if (answer[i] == '0') zero_cnt++;
-    }
-    if (zero_cnt == size) return "0";
-    return answer;
+	string answer = "";
+	vector<string> strArr;
+	for (int i = 0; i < numbers.size(); i++) {
+		strArr.push_back(int_to_string(numbers.at(i)));
+	}
+	sort(strArr.begin(),strArr.end(),cmp);
+	for (string str : strArr) {
+		answer += str;
+	}
+	if (answer[0] == '0')
+		return "0";
+	return answer;
 }
 
 
