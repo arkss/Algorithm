@@ -1,23 +1,23 @@
 #include <iostream>
-#include <queue>
+#include <stack>
 
 using namespace std;
 
-bool solution(string s){
-    queue<char> q;
-    for (int i=0;i<s.size();i++){
-        char now = s[i];
+bool solution(string str){
+    stack<char> s;
+    for (int i=0;i<str.size();i++){
+        char now = str[i];
         if (now == '('){
-            q.push(now);
+            s.push(now);
         } else if (now == ')'){
-            if (q.empty()){
+            if (s.empty()){
                 return false;    
             } else {
-                q.pop();
+                s.pop();
             }  
         } 
     }
-    if (!q.empty()) return false;
+    if (!s.empty()) return false;
     else return true;
 }
 
