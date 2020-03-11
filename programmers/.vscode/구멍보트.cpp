@@ -13,7 +13,7 @@ int solution(vector<int> people, int limit){
     int answer = 0;
     int size = people.size();
     int j = size-1;
-    for (int i=0;i<j;i++){
+    for (int i=0;i<=j;i++){
         int first = people[i];
         int second_limit = limit - first;
 
