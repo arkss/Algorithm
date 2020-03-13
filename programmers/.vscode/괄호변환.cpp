@@ -55,15 +55,10 @@ string solution(string p)
         v = "";
     }
 
-    cout << u << " " << v << "\n";
-
     // 3. 문자열 u가 "올바른 괄호 문자열" 이라면 문자열 v에 대해 1단계부터 다시 수행합니다.
     //   3-1. 수행한 결과 문자열을 u에 이어 붙인 후 반환합니다.
     if (check_correct(u))
-    {
-        cout << "correct\n";
         return u + solution(v);
-    }
 
     // 4. 문자열 u가 "올바른 괄호 문자열"이 아니라면 아래 과정을 수행합니다.
     //   4-1. 빈 문자열에 첫 번째 문자로 '('를 붙입니다.
@@ -73,11 +68,7 @@ string solution(string p)
     //   4-5. 생성된 문자열을 반환합니다.
     else
     {
-        cout << "!correct\n";
-        string temp;
-        temp += "(";
-        temp += solution(v);
-        temp += ")";
+        string temp = "(" + solution(v) + ")";
         string change_u = u.substr(1, u.size() - 2);
         for (int i = 0; i < change_u.size(); i++)
         {
@@ -92,6 +83,5 @@ string solution(string p)
 
 int main()
 {
-
     cout << solution(")(") << "\n";
 }
