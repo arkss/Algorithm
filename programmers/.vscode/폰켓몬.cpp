@@ -4,14 +4,10 @@
 
 using namespace std;
 
-int min(int a, int b){
-    return a<b ? a:b;
-}
-
 int solution(vector<int> nums)
 {
     sort(nums.begin(), nums.end());
-    vector<pair<int, int> > v;
+    vector<pair<int, int>> v;
     int prev = nums[0];
     int cnt = 0;
     int num;
@@ -28,7 +24,7 @@ int solution(vector<int> nums)
         prev = num;
     }
     v.push_back(make_pair(prev, cnt));
-    return min(nums.size()/2, v.size());
+    return min(nums.size() / 2, v.size());
 }
 
 int main()
