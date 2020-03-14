@@ -26,7 +26,6 @@ vector<string> solution(vector<string> record){
             user[id] = nickname;
             messageWithId.push_back(make_pair(id,"님이 들어왔습니다."));
         } else if (action == "Leave") {
-            user[id] = nickname;
             messageWithId.push_back(make_pair(id,"님이 나갔습니다."));
         } else if (action == "Change") {
             user[id] = nickname;
