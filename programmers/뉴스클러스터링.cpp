@@ -57,11 +57,6 @@ int solution(string str1, string str2){
             else str2Set[temp] = 1;
     }
 
-    cout << str1 << " "<< str2 << "\n";
-
-    print_map(str1Set);
-    print_map(str2Set);
-
     int intersectionSize = 0;
     int unionSize = 0;
 
@@ -93,19 +88,8 @@ int solution(string str1, string str2){
         unionSize += i->second;
     }
 
-    
-
-    // for (map<string, int>::iterator i=str1Set.begin();i!=str1Set.end();i++){
-    //     cout << i->first << " " << i->second << " ";
-    // }
-    // cout << "\n";
-    // for (map<string, int>::iterator i=str2Set.begin();i!=str2Set.end();i++){
-    //     cout << i->first << " " << i->second << " ";
-    // }
-    // cout << "\n";
-
     double answer;
-    if (!intersectionSize && !unionSize) answer = 0;
+    if (!intersectionSize && !unionSize) answer = 1;
     else answer = (double)intersectionSize / unionSize;
     answer *= 65536;
     return (int)answer;
