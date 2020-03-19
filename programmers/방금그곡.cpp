@@ -37,7 +37,7 @@ string changeMelody(string melody){
 
 string solution(string m, vector<string> musicinfos){
     m = changeMelody(m);
-    vector<pair<string,string> > answer;
+    vector<pair<string,int> > answer;
     for (int i=0;i<musicinfos.size();i++){
         string musicinfo = musicinfos[i];
         vector<string> musicinfo_vector = split(musicinfo, ',');
@@ -54,16 +54,11 @@ string solution(string m, vector<string> musicinfos){
         for (int i=0;i<total_time;i++){
             play += melody[i%melody.size()];
         }
-        //cout << "play: " << play << "\n";
-//play : CDEFGABCDEFGAB 14
-// m : ABCDEFG 7 
-        //cout << "play: " << play << "\n";
+
         if (play.size() < m.size()) continue;
         for (int j=0;j<play.size()-m.size()+1;j++){
-            // cout << play.size() << " " << m.size() << "\n";
-            // cout << play[j] << "\n";
             if (play.substr(j,m.size()) == m) {
-                answer.push_back(make_pair(title, musicinfo_vector[3]));
+                answer.push_back(make_pair(title, total_time));
                 break;
             }
         }    
@@ -75,10 +70,10 @@ string solution(string m, vector<string> musicinfos){
     
     for (int i=0;i<answer.size();i++){
         string titleTemp = answer[i].first;
-        string melodyTemp = answer[i].second;
+        int playTemp = answer[i].second;
 
-        if (maxV < melodyTemp.size()){
-            maxV = melodyTemp.size();
+        if (maxV < playTemp){
+            maxV = playTemp;
             rst = titleTemp;
         }
     }
