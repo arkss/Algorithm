@@ -9,7 +9,8 @@
             "args": [
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
-                "${file}"
+                "${file}",
+                "-std=c++11"
             ],
             "group": {
                 "kind": "build",
