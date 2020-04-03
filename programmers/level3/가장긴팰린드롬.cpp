@@ -12,15 +12,35 @@ bool isPel(string s){
 }
 
 int solution(string s){
-    int answer = 0;
-    for (int i=0;i<s.size();i++){
-        for (int j=1;i+j<=s.size();j++){
-            if (s[i] != s[i+j-1]) continue;
-            string temp = s.substr(i,j);
-            if (temp.size() > answer && isPel(temp)) {
-                answer = temp.size();
+    int answer = 1;
+    int len = s.size();
+    if (len == 0) return 0;
+
+    while (len >=2){
+        int start = 0;
+        for (int i=0;i<=s.size()-len;i++){
+            bool flag = false;
+
+            if (len % 2 != 0){
+                for (int j=0;j<len/2;j++){
+                    if (s[i+j] != s[i+len/2*2-j]){
+                        flag = true;
+                        break;
+                    }
+                }
             }
+            else {
+                for (int j=0;j<len/2;j++){
+                    if (s[i+j] != s[i+len-1-j]){
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!flag) return len;
         }
+        len -= 1;
     }
     return answer;
 }
