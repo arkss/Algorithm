@@ -46,11 +46,12 @@ void print_board(int n){
 
 void backtracking(int n, int row){
     if (n == row) {
-        print_board(n);
-        cout << "\n";
+        // print_board(n);
+        // cout << "\n";
         answer++;
         return;
     }
+    
     for (int i=0;i<n;i++){
         if (queen_check(row, i, n)){
             board[row][i] = 1;
