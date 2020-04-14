@@ -1,3 +1,5 @@
+
+/* 1번 풀이
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -48,7 +50,7 @@ vector<int> solution(vector<string> operations){
             }
         }
 
-        print_arr(v);
+        //print_arr(v);
     }
     vector<int> answer;
     if (v.size() == 0) return {0,0};
@@ -60,7 +62,66 @@ vector<int> solution(vector<string> operations){
 int main(){
     vector<int> result = solution({"I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"});
     for (int i=0;i<result.size();i++){
-        cout << result[i] << " ";
+        //cout << result[i] << " ";
+    }
+    return 0;
+}
+*/
+
+
+// 방법2 multiset 사용
+#include <iostream>
+#include <vector>
+#include <set>
+#include <sstream>
+
+using namespace std;
+
+vector<string> split(string input, char delimiter){
+    vector<string> answer;
+    stringstream ss(input);
+    string temp;
+
+    while(getline(ss, temp, delimiter)){
+        answer.push_back(temp);
+    }
+
+    return answer;
+}
+
+vector<int> solution(vector<string> operations){
+    multiset<int> ms;
+
+    for (int i=0;i<operations.size();i++){
+        cout << i <<"\n";
+        vector<string> operation = split(operations[i],' ');
+        string command = operation[0];
+        int value = stoi(operation[1]);
+        if (command == "I"){
+            ms.insert(value);
+        }
+        else if (command == "D"){
+            if (ms.size() == 0) continue;
+            else if (value == 1){
+                // 마지막 값 삭제
+                ms.erase(--ms.end());
+            } 
+            else {
+                ms.erase(ms.begin());
+            }
+        }
+    }
+    vector<int> answer;
+    if (ms.size() == 0) return {0,0};
+    answer.push_back(*(--ms.end()));
+    answer.push_back(*ms.begin());
+    return answer;
+}
+
+int main(){
+    vector<int> result = solution({"I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"});
+    for (int i=0;i<result.size();i++){
+        //cout << result[i] << " ";
     }
     return 0;
 }
