@@ -1,31 +1,34 @@
 #include <iostream>
+#include <string>
 #include <vector>
 #include <algorithm>
 
 using namespace std;
 
-bool compare(int a, int b){
-    return a<b;
-}
+int solution(vector<int> budgets, int M) {
+    int answer = 0;
+    int numbers = budgets.size();
 
-int solution(vector<int> budgets, int M){
-    sort(budgets.begin(), budgets.end(), compare);
+    sort(budgets.begin(),budgets.end());
 
-    int origin_budget = budgets[budgets.size()-1];
-    
-    while(M>=budgets.size()){
-        for (int i=0;i<budgets.size();i++){
-            if (budgets[i] > 0){
-                budgets[i]--;
-                M--;
-            }
+    for (int i=0;i<budgets.size();i++){
+        int budget = budgets[i];
+        if (budget > M / numbers) return M/numbers;
+        else {
+            M -= budget;
+            numbers--;
         }
     }
-    int answer = origin_budget - budgets[budgets.size()-1];
-    return answer+1;
+
+    return budgets.back();
 }
 
+
+
+
+
+
+
 int main(){
-    cout << solution({120,110,140,150}, 485) << "\n";
-    return 0;
+    cout << solution({120, 110, 140, 150}, 485) << "\n";
 }
