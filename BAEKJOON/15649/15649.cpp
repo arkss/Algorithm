@@ -20,7 +20,7 @@ void backtracking(int N,int M, int cnt){
             if (!visited[i]){
                 visited[i] = 1;
                 answer.push_back(i);
-                backtracking(N, M, cnt);
+                backtracking(N, M, cnt+1);
                 answer.pop_back();
                 visited[i] = 0;
             }
