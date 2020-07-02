@@ -1,6 +1,7 @@
 # MAC OS
 .DS_Store
 
+.vscode
 
 # Created by https://www.gitignore.io/api/xcode
 # Edit at https://www.gitignore.io/?templates=xcode
