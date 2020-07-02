@@ -5,25 +5,30 @@ using namespace std;
 
 vector<int> answer;
 
-void backtracking(int N, int M, int cnt){
-    if (M == cnt){
-        for (int i=0;i<answer.size();i++){
+void backtracking(int N, int M, int cnt)
+{
+    if (M == cnt)
+    {
+        for (int i = 0; i < answer.size(); i++)
+        {
             cout << answer[i] << " ";
         }
         cout << "\n";
         return;
     }
-    for (int i=1;i<=N;i++){
+    for (int i = 1; i <= N; i++)
+    {
         answer.push_back(i);
-        backtracking(N,M,cnt+1);
+        backtracking(N, M, cnt + 1);
         answer.pop_back();
     }
 }
 
-int main(){
+int main()
+{
     int N, M;
     cin >> N >> M;
 
-    backtracking(N,M,0);
+    backtracking(N, M, 0);
     return 0;
 }
