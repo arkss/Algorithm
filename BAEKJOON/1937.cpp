@@ -9,16 +9,15 @@ int dp[501][501];
 int dx[] = {0, 0, 1, -1};
 int dy[] = {1, -1, 0, 0};
 
-int longest;
-
-void dfs(int n, int x, int y, int cnt)
+int dfs(int n, int x, int y)
 {
+    dp[x][y] = 1;
     // if (cnt == 1)
     // {
     //     cout << x << " " << y << "에서 시작\n";
     // }
     // cout << x << " " << y << " " << cnt << "\n";
-    longest = max(longest, cnt);
+
     for (int i = 0; i < 4; i++)
     {
         int nx = x + dx[i];
@@ -28,12 +27,13 @@ void dfs(int n, int x, int y, int cnt)
             if (board[nx][ny] > board[x][y])
             {
                 if (dp[nx][ny])
-                    longest = max(longest, dp[nx][ny] + 1);
+                    dp[x][y] = max(dp[x][y], dp[nx][ny] + 1);
                 else
-                    dfs(n, nx, ny, cnt + 1);
+                    dp[x][y] = max(dp[x][y], dfs(n, nx, ny) + 1);
             }
         }
     }
+    return dp[x][y];
 }
 
 void print_dp(int n)
@@ -66,14 +66,11 @@ int main()
     {
         for (int j = 0; j < n; j++)
         {
-            dfs(n, i, j, 1);
-            dp[i][j] = longest;
-            answer = max(answer, dp[i][j]);
-            longest = 0;
+            answer = max(answer, dfs(n, i, j));
         }
     }
 
-    print_dp(n);
+    //print_dp(n);
 
     cout << answer << "\n";
 }
