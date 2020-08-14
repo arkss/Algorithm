@@ -43,7 +43,6 @@ int main()
         int start, end, weight;
         cin >> start >> end >> weight;
         board[start][end] = weight;
-        //adjust[start].push_back({end, weight});
     }
 
     floyd_warshall(N);
