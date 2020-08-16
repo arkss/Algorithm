@@ -33,7 +33,7 @@ int main()
         }
 
         cnt++;
-        cout << s[i] << " ";
+        //cout << s[i] << " ";
     }
 
     cout << cnt << "\n";
