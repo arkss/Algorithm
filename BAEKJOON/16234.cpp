@@ -67,12 +67,9 @@ int create_union(int N, int L, int R)
     int union_num = 0;
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
-        {
             if (!visited[i][j])
-            {
                 bfs(i, j, union_num++, N, L, R);
-            }
-        }
+
     return union_num;
 }
 
@@ -95,8 +92,7 @@ void move_population(int union_num)
 
 void reset_visited_and_unions(int N)
 {
-    for (int i = 0; i < N; i++)
-        memset(visited[i], 0, sizeof(visited));
+    memset(visited, 0, sizeof(visited));
 
     for (int i = 0; i < N * N; i++)
         unions[i].clear();
