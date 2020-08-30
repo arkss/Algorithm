@@ -52,6 +52,25 @@ void backtracking(int N, int idx, int num)
     }
 }
 
+bool check_error_input(int N)
+{
+    for (int i = 0; i < N; i++)
+    {
+        bool is_error = true;
+        for (int j = 0; j < 10; j++)
+        {
+            if (possible_num_board[i][j])
+            {
+                is_error = false;
+                break;
+            }
+        }
+        if (is_error)
+            return is_error;
+    }
+    return false;
+}
+
 int main()
 {
     int N;
@@ -90,17 +109,31 @@ int main()
         }
     }
     //print_possible_num_board(N);
-
-    backtracking(N, 0, 0);
-
-    double possible_sum = 0;
-
-    for (int i = 0; i < possible_nums.size(); i++)
+    bool is_error = check_error_input(N);
+    if (is_error)
     {
-        possible_sum += possible_nums[i];
+        cout << "-1\n";
+        return 0;
     }
-    if (possible_sum == 0)
-        cout << -1 << "\n";
-    else
-        cout << possible_sum / possible_nums.size() << "\n";
+
+    //backtracking(N, 0, 0);
+
+    double possible_avg = 0;
+
+    for (int i = 0; i < N; i++)
+    {
+        double temp_sum = 0;
+        int temp_cnt = 0;
+        for (int j = 0; j < 10; j++)
+        {
+            if (possible_num_board[i][j])
+            {
+                temp_sum += j;
+                temp_cnt++;
+            }
+        }
+        possible_avg = possible_avg * 10 + (temp_sum / temp_cnt);
+    }
+
+    cout << possible_avg << "\n";
 }
