@@ -2,28 +2,39 @@
 
 using namespace std;
 
-int consult[2][17];
-int dp[17];
+int board[2][16];
+int dp[16];
 
 int main()
 {
     int N;
     cin >> N;
 
-    for (int i = 1; i <= N; i++)
+    int answer = 0;
+
+    for (int i = 0; i < N; i++)
     {
-        cin >> consult[0][i];
-        cin >> consult[1][i];
+        cin >> board[0][i] >> board[1][i];
     }
 
-    for (int i = 1; i <= N + 1; i++)
+    for (int i = 0; i <= N; i++)
     {
-        for (int j = 1; j <= i; j++)
+        for (int j = 0; j <= i; j++)
         {
-            if (consult[0][j] + j <= i)
-                dp[i] = max(dp[i], dp[j] + consult[1][j]);
+            int t = board[0][j];
+            int p = board[1][j];
+            if (t + j <= i)
+            {
+                dp[i] = max(dp[i], dp[j] + p);
+            }
         }
     }
 
-    cout << dp[N + 1] << "\n";
+    // for (int i = 0; i <= N; i++)
+    // {
+    //     cout << dp[i] << " ";
+    // }
+    // cout << "\n";
+
+    cout << dp[N] << "\n";
 }
