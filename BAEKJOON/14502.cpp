@@ -51,7 +51,7 @@ void reset_visited()
 
 void bfs(pair<int, int> p)
 {
-    
+
     queue<pair<int, int>> q;
     q.push(p);
 
