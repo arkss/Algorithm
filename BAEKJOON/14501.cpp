@@ -3,6 +3,7 @@
 using namespace std;
 
 int board[2][16];
+// dp[i] : i번쨰 날까지의 최대
 int dp[16];
 
 int main()
@@ -30,11 +31,11 @@ int main()
         }
     }
 
-    // for (int i = 0; i <= N; i++)
-    // {
-    //     cout << dp[i] << " ";
-    // }
-    // cout << "\n";
+    for (int i = 0; i <= N; i++)
+    {
+        cout << dp[i] << " ";
+    }
+    cout << "\n";
 
     cout << dp[N] << "\n";
 }
