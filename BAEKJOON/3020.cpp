@@ -37,7 +37,7 @@ int main()
         int bottom_num = bottom.size() - (lower_bound(bottom.begin(), bottom.end(), i) - bottom.begin());
         int top_num = top.size() - (upper_bound(top.begin(), top.end(), H - i) - top.begin());
 
-        //cout << bottom_num << " " << top_num << "\n";
+        // cout << bottom_num << " " << top_num << "\n";
 
         if (answer == bottom_num + top_num)
             cnt++;
