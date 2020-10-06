@@ -2,6 +2,7 @@
 #include <queue>
 #include <vector>
 #include <algorithm>
+#include <cstring>
 
 using namespace std;
 
@@ -24,7 +25,7 @@ void BFS(int r, int c, int N)
     int distance = 21 * 21;
 
     q.push(make_pair(r, c));
-    while (1)
+    while (!q.empty())
     {
         r = q.front().first;
         c = q.front().second;
@@ -52,8 +53,6 @@ void BFS(int r, int c, int N)
                     }
                 }
         }
-        if (q.empty())
-            break;
     }
 }
 
@@ -117,8 +116,7 @@ int main()
     }
     while (1)
     {
-        // TODO: memset 어떻게 쓰더라
-        reset_visited(N);
+        memset(visited, 0, sizeof(visited));
         BFS(r, c, N);
         if (eats.size())
         {
