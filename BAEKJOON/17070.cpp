@@ -6,6 +6,10 @@ int board[17][17];
 int N;
 int answer;
 
+// 우, 세로, 대각
+int dx[] = {0, 1, 1};
+int dy[] = {1, 0, 1};
+
 bool is_valid(int x, int y)
 {
     return 1 <= x && x <= N && 1 <= y && y <= N;
@@ -20,30 +24,27 @@ void make_pipe(int x, int y, int pipe_num)
         return;
     }
 
-    if (pipe_num == 0)
+    for (int i = 0; i < 3; i++)
     {
-        if (is_valid(x, y + 1) && !board[x][y + 1])
-            make_pipe(x, y + 1, 0);
-        if (is_valid(x + 1, y + 1) && !board[x + 1][y + 1] && !board[x][y + 1] && !board[x + 1][y])
-            make_pipe(x + 1, y + 1, 2);
-    }
+        if (pipe_num == 0 && i == 1)
+            continue;
+        if (pipe_num == 1 && i == 0)
+            continue;
 
-    else if (pipe_num == 1)
-    {
-        if (is_valid(x + 1, y) && !board[x + 1][y])
-            make_pipe(x + 1, y, 1);
-        if (is_valid(x + 1, y + 1) && !board[x + 1][y + 1] && !board[x][y + 1] && !board[x + 1][y])
-            make_pipe(x + 1, y + 1, 2);
-    }
+        int nx = x + dx[i];
+        int ny = y + dy[i];
 
-    else
-    {
-        if (is_valid(x, y + 1) && !board[x][y + 1])
-            make_pipe(x, y + 1, 0);
-        if (is_valid(x + 1, y) && !board[x + 1][y])
-            make_pipe(x + 1, y, 1);
-        if (is_valid(x + 1, y + 1) && !board[x + 1][y + 1] && !board[x][y + 1] && !board[x + 1][y])
-            make_pipe(x + 1, y + 1, 2);
+        if (!is_valid(nx, ny))
+            continue;
+
+        if (board[nx][ny])
+            continue;
+
+        if (i == 2)
+            if (board[x + 1][y] || board[x][y + 1])
+                continue;
+
+        make_pipe(nx, ny, i);
     }
 }
 
