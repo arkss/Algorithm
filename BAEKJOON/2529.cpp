@@ -1,34 +1,20 @@
 #include <iostream>
 #include <vector>
-#include <sstream>
+#include <string>
 
 using namespace std;
 vector<string> signs;
-vector<int> answer;
+vector<string> answer;
 
 bool visited[10];
-
-vector<string> split(string input, char delimiter)
-{
-    vector<string> answer;
-    stringstream ss(input);
-    string temp;
-
-    while (getline(ss, temp, delimiter))
-    {
-        answer.push_back(temp);
-    }
-
-    return answer;
-}
 
 bool checkValidSign(vector<int> nums)
 {
     for (int i = 0; i < signs.size(); i++)
     {
-        if (signs[i] == "<" && nums[i] > nums[i + 1])
+        if (signs[i] == "<" && (nums[i] > nums[i + 1]))
             return false;
-        else if (signs[i] == "<" && nums[i] < nums[i + 1])
+        else if (signs[i] == ">" && (nums[i] < nums[i + 1]))
             return false;
     }
     return true;
@@ -40,11 +26,11 @@ void backtracking(int goal, int cnt, vector<int> nums)
     {
         if (checkValidSign(nums))
         {
+            string rst = "";
             for (int i = 0; i < nums.size(); i++)
-            {
-                cout << nums[i] << " ";
-            }
-            cout << "\n";
+                rst += to_string(nums[i]);
+
+            answer.push_back(rst);
         }
     }
     else
@@ -68,10 +54,16 @@ int main()
     int n;
     cin >> n;
 
-    string strSigns;
-    cin >> strSigns;
+    for (int i = 0; i < n; i++)
+    {
+        string temp;
+        cin >> temp;
+        signs.push_back(temp);
+    }
 
-    signs = split(strSigns, ' ');
     vector<int> nums;
     backtracking(n + 1, 0, nums);
+
+    cout << answer[answer.size() - 1] << "\n";
+    cout << answer[0] << "\n";
 }
