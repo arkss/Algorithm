@@ -65,6 +65,6 @@ media/
 
 # End of https://www.gitignore.io/api/visualstudiocode
 
-
+.idea
 
 coding_test
