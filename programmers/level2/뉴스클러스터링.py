@@ -6,10 +6,16 @@ def solution(str1, str2):
     str1_2 = []
     str2_2 = []
 
-    str1_2 = [str1[idx:idx+2].lower() for idx in range(len(str1)-1)
-              if str1[idx:idx+2].isalpha()]
-    str2_2 = [str2[idx:idx+2].lower() for idx in range(len(str2)-1)
-              if str2[idx:idx+2].isalpha()]
+    str1_2 = [
+        str1[idx : idx + 2].lower()
+        for idx in range(len(str1) - 1)
+        if str1[idx : idx + 2].isalpha()
+    ]
+    str2_2 = [
+        str2[idx : idx + 2].lower()
+        for idx in range(len(str2) - 1)
+        if str2[idx : idx + 2].isalpha()
+    ]
 
     if not str1_2 and not str2_2:
         return 65536

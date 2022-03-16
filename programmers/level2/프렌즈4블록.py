@@ -2,20 +2,22 @@ def check_delete_board(m, n, board, delete_board):
 
     has_delete = False
 
-    for i in range(m-1):
-        for j in range(n-1):
+    for i in range(m - 1):
+        for j in range(n - 1):
             character = board[i][j]
 
             if character == "0":
                 continue
 
-            if board[i+1][j] == character \
-                    and board[i][j+1] == character \
-                    and board[i+1][j+1] == character:
+            if (
+                board[i + 1][j] == character
+                and board[i][j + 1] == character
+                and board[i + 1][j + 1] == character
+            ):
                 delete_board[i][j] = 1
-                delete_board[i+1][j] = 1
-                delete_board[i][j+1] = 1
-                delete_board[i+1][j+1] = 1
+                delete_board[i + 1][j] = 1
+                delete_board[i][j + 1] = 1
+                delete_board[i + 1][j + 1] = 1
                 has_delete = True
 
     return has_delete
@@ -43,7 +45,7 @@ def solution(m, n, board):
                 else:
                     delete_cnt += 1
 
-            for i in range(m-1, -1, -1):
+            for i in range(m - 1, -1, -1):
                 if stack:
                     board[i][j] = stack.pop()
                 else:

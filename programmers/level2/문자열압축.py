@@ -3,13 +3,13 @@ def solution(s):
         return 1
     min_length = 987654321
 
-    for i in range(1, len(s)//2+1):
+    for i in range(1, len(s) // 2 + 1):
         cnt = 1
         now_len = 0
         prev = s[0:i]
 
         for idx in range(i, len(s), i):
-            now = s[idx:idx+i]
+            now = s[idx : idx + i]
 
             if now == prev:
                 cnt += 1

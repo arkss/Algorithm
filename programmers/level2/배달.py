@@ -24,8 +24,8 @@ def dijsktra(dist, adjust, K):
 
 def solution(N, roads, K):
 
-    dist = [INF for _ in range(N+1)]
-    adjust = [[] for _ in range(N+1)]
+    dist = [INF for _ in range(N + 1)]
+    adjust = [[] for _ in range(N + 1)]
 
     for road in roads:
         s = road[0]
@@ -38,7 +38,7 @@ def solution(N, roads, K):
 
     answer = 0
 
-    for i in range(1, N+1):
+    for i in range(1, N + 1):
         if dist[i] <= K:
             answer += 1
 

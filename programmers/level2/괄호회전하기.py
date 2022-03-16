@@ -2,27 +2,27 @@ def is_correct(s):
     stack = []
 
     for c in s:
-        if c == '(' or c == '[' or c == '{':
+        if c == "(" or c == "[" or c == "{":
             stack.append(c)
         else:
-            if c == ')':
+            if c == ")":
                 if not stack:
                     return False
-                if stack[-1] != '(':
+                if stack[-1] != "(":
                     return False
                 else:
                     stack.pop()
-            elif c == ']':
+            elif c == "]":
                 if not stack:
                     return False
-                if stack[-1] != '[':
+                if stack[-1] != "[":
                     return False
                 else:
                     stack.pop()
-            elif c == '}':
+            elif c == "}":
                 if not stack:
                     return False
-                if stack[-1] != '{':
+                if stack[-1] != "{":
                     return False
                 else:
                     stack.pop()
@@ -36,12 +36,12 @@ def is_correct(s):
 def solution(s):
     answer = 0
     for _ in range(len(s)):
-        s = s[-1] + s[:len(s)-1]
+        s = s[-1] + s[: len(s) - 1]
 
         if is_correct(s):
             answer += 1
 
-        #print(f"{s} : {answer}")
+        # print(f"{s} : {answer}")
     return answer
 
 

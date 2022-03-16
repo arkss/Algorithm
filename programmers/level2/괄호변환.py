@@ -12,7 +12,6 @@ def check_correct_brackets(brackets):
     return True
 
 
-
 def solution(p):
     # 1
     if not p:
@@ -23,7 +22,7 @@ def solution(p):
     right_cnt = 0
     idx = 0
     for i, bracket in enumerate(p):
-        if bracket == '(':
+        if bracket == "(":
             left_cnt += 1
         else:
             right_cnt += 1
@@ -32,22 +31,22 @@ def solution(p):
             idx = i
             break
 
-    u = p[:idx+1]
-    v = p[idx+1:]
+    u = p[: idx + 1]
+    v = p[idx + 1 :]
 
     is_correct = check_correct_brackets(u)
 
     if is_correct:
         return u + solution(v)
 
-    answer = '('
+    answer = "("
     answer += solution(v)
-    answer += ')'
+    answer += ")"
 
-    for idx in range(1, len(u)-1):
-        if u[idx] == '(':
-            answer += ')'
+    for idx in range(1, len(u) - 1):
+        if u[idx] == "(":
+            answer += ")"
         else:
-            answer += '('
+            answer += "("
 
     return answer

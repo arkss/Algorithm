@@ -29,10 +29,10 @@ def bfs(place, i, j, size):
             if visited[nx][ny]:
                 continue
 
-            if place[nx][ny] == 'X':
+            if place[nx][ny] == "X":
                 continue
 
-            if place[nx][ny] == 'P':
+            if place[nx][ny] == "P":
                 return True
 
             visited[nx][ny] = 1
@@ -46,7 +46,7 @@ def check_distance(place):
 
     for i in range(size):
         for j in range(size):
-            if place[i][j] == 'P':
+            if place[i][j] == "P":
                 # print(f"{i},{j}에서 수행")
                 if bfs(place, i, j, size):
                     return 0
@@ -68,7 +68,7 @@ if __name__ == "__main__":
         ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"],
         ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"],
         ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"],
-        ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]
+        ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"],
     ]
 
     print(solution(test_case))
